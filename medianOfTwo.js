@@ -4,22 +4,35 @@
 // The overall run time complexity should be O(log (m+n)).
 
 const twoSort = (nums1, nums2) => {
-  // merge both arrays & sort them
-  const children = nums1.concat(nums2).sort();
-  // math.floor rounds down to closest whole integer
-  // dividing new array by 2 to check if its odd
-  const mid = Math.floor(children.length / 2);
-  console.log(mid);
+  const m = nums1.length;
+  const n = nums2.length;
+  const add = m + n;
+  let ans = [];
+  let pointer1 = 0;
+  let pointer2 = 0;
+  for (let i = 0; i < add; i++) {
+    if (nums1[pointer1] <= nums2[pointer2] || nums2.length <= pointer2) {
+      // means first/current number in first array is bigger so we push it two new array
+      ans.push(nums1[pointer1]);
+      pointer1 += 1;
+    } else {
+      // else current number in second array is bigger so we push that instead
+      ans.push(nums2[pointer2]);
+      pointer2 += 1;
+    }
+  }
 
-  // return number at midpoint if the array is odd => Absolutely being divided by 2 does not equal 0
-  return mid % 2 !== 0
-    ? children[mid]
-    : // else divide divide the two middle numbers
-      (children[mid - 1] + children[mid]) / 2;
+  if (ans.length % 2 === 0) {
+    return (ans[ans.length / 2 - 1] + ans[ans.length / 2]) / 2;
+  } else {
+    return ans[(ans.length - 1) / 2];
+  }
 };
 
 console.log(twoSort([1, 3], [2]));
 console.log(twoSort([1, 2], [3, 4]));
+console.log(twoSort([], [1]));
+console.log(twoSort([], [2, 3]));
 
 // Example 1:
 
