@@ -11,20 +11,21 @@ const twoSort = (nums1, nums2) => {
   let pointer1 = 0;
   let pointer2 = 0;
   for (let i = 0; i < add; i++) {
+    // sort elements into new array from smallest to biggest
     if (nums1[pointer1] <= nums2[pointer2] || nums2.length <= pointer2) {
-      // means first/current number in first array is bigger so we push it two new array
       ans.push(nums1[pointer1]);
       pointer1 += 1;
     } else {
-      // else current number in second array is bigger so we push that instead
       ans.push(nums2[pointer2]);
       pointer2 += 1;
     }
   }
 
   if (ans.length % 2 === 0) {
+    // take two mid numbers and divide them by 2
     return (ans[ans.length / 2 - 1] + ans[ans.length / 2]) / 2;
   } else {
+    // take the mid number
     return ans[(ans.length - 1) / 2];
   }
 };
