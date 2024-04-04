@@ -4,14 +4,20 @@
 // The overall run time complexity should be O(log (m+n)).
 
 const twoSort = (nums1, nums2) => {
+  // Get length of arrays
   const m = nums1.length;
   const n = nums2.length;
+  // add sum length
   const add = m + n;
+  // empty array for sorted list
   let ans = [];
+  // pointers for each element
   let pointer1 = 0;
   let pointer2 = 0;
+  // loop up to lengths of arrays sum
   for (let i = 0; i < add; i++) {
     // sort elements into new array from smallest to biggest
+    console.log(nums1[pointer1], nums2[pointer2], nums2.length);
     if (nums1[pointer1] <= nums2[pointer2] || nums2.length <= pointer2) {
       ans.push(nums1[pointer1]);
       pointer1 += 1;
