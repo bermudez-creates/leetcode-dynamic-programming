@@ -1,7 +1,7 @@
 // Given a string s,
 // return the longest palindromic substring in s.
 
-const longPalindrome = (s) => {
+const longestPalindrome = (s) => {
   if (!s) return '';
 
   const check = (s, left, right) => {
@@ -9,7 +9,7 @@ const longPalindrome = (s) => {
       left--;
       right++;
     }
-    console.log(left, right);
+    // console.log(left, right);
     return right - left - 1;
   };
 
@@ -26,9 +26,11 @@ const longPalindrome = (s) => {
       end = i + Math.floor(max / 2);
     }
   }
+
+  return s[(start, end + 1)];
 };
 
-const longestPalindrome = function (s) {
+const longePalindrome = function (s) {
   const table = Array(s.length + 1).fill([]);
 
   let max = 1;
@@ -64,10 +66,29 @@ const longestPalindrome = function (s) {
   return s.slice(start, start + max);
 };
 
-console.log(longestPalindrome('babad'));
-console.log(longestPalindrome('cbbd'));
+const longPalindrome = (s) => {
+  const reversedString = s.toString().split('').reverse().join('');
+  const arr = [];
+  console.log(`String -`, s);
+  console.log(`Reversed -`, reversedString);
+
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === reversedString[i]) {
+      arr.push(s[i]);
+    } else {
+      console.log(s[i], `&&`, s.length);
+    }
+  }
+
+  const isPalindrome = arr.join('');
+  return isPalindrome;
+};
+
+// console.log(longestPalindrome('babad'));
+// console.log(longestPalindrome('cbbd'));
 console.log(longestPalindrome('ac')); // => a find way to loop thru array
 console.log(longestPalindrome('aacabdkacaa'));
+console.log(longestPalindrome('xkarqzghhgfedcbabcdefgzdekx'));
 
 // Example 1:
 //                                         b
