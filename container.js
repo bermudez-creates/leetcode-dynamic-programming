@@ -9,47 +9,30 @@
 // Notice that you may not slant the container.
 
 const maxArea = (height) => {
+  // set pointer for last index
   let lastIdx = height.length - 1;
-
-  let pointerLeft = height[0];
-  let pointerRight = height[lastIdx];
+  // set starting pointer
+  let pointerLeft = 0;
+  let pointerRight = lastIdx;
   let maxArea = 0;
-  console.log(`LEFT --`, pointerLeft);
-  console.log(`RIGHT --`, pointerRight);
 
-  // while (pointerLeft < pointerRight) {
-  //   let width = pointerRight - pointerLeft;
-  //   console.log(`Width:`, width);
-  //   let area = Math.min(height[pointerLeft], height[pointerRight]) * width;
+  while (pointerLeft < pointerRight) {
+    let width = pointerRight - pointerLeft;
+    let area = Math.min(height[pointerLeft], height[pointerRight]) * width;
 
-  //   maxArea = Math.max(maxArea, area);
-
-  //   if (height[pointerLeft] <= height[pointerRight]) {
-  //     console.log(`LEFT in IF statement--`, pointerLeft);
-  //     pointerLeft++;
-  //   } else {
-  //     console.log(`RIGHT in IF statement--`, pointerRight);
-  //     pointerRight--;
-  //   }
-  // }
-
-  for (let i = 0; i < height.length; i++) {
-    console.log(`Index`, height[i]);
-    console.log(`POINTER RIGHT`, pointerRight);
-    console.log(`POINTER LEFT`, pointerLeft);
-    if (pointerLeft < height[i] || pointerLeft <= height[i]) {
-      pointerLeft = height[i + 1];
-      console.log(`---`, pointerLeft);
-    } else {
-      pointerRight = height[i - 1];
-    }
-    let area = Math.min(height[pointerLeft], height[pointerRight]);
-    console.log(`Area:`, area);
     maxArea = Math.max(maxArea, area);
+
+    // move index over if left < right
+    if (height[pointerLeft] <= height[pointerRight]) {
+      pointerLeft++;
+    } else {
+      // right index is less so move down
+      pointerRight--;
+    }
   }
 
   return maxArea;
 };
 
 console.log(maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]));
-//console.log(maxArea([1, 1]));
+console.log(maxArea([1, 1]));
