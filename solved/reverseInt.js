@@ -3,7 +3,6 @@
 // then return 0.
 
 const reverse = (x) => {
-  console.log(`START`, Math.abs(x).toString().split('').reverse().join(''));
   let reverseInteger = parseInt(
     Math.abs(x).toString().split('').reverse().join('')
   );
@@ -13,18 +12,7 @@ const reverse = (x) => {
     return 0;
   }
 
-  console.log(`END`, -Math.abs(x));
   return x < 0 ? -Math.abs(reverseInteger) : reverseInteger;
-
-  // let pop = x % 10;
-  // x /= 10;
-
-  // console.log(`---`, x);
-  // if (pop !== 0) {
-  //   rev(x);
-  // } else {
-  //   return x;
-  // }
 };
 
 console.log(reverse(-123));
